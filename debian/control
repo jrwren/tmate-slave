@@ -1,0 +1,15 @@
+Source: tmate-slave
+Section: utils
+Priority: optional
+Maintainer: Jay R. Wren <jrwren@xmtp.net>
+Build-Depends: debhelper (>=9), libmsgpack-dev (>=1.2.0), libssh-dev, automake, autoconf, libtool, pkg-config, libevent-dev, libtinfo-dev, libncurses-dev
+Standards-Version: 3.9.6
+Homepage: https://tmate.io
+Vcs-Git: git@github.com:jrwren/tmate-slave.git
+Vcs-Browser: https://github.com/jrwren/tmate-slave
+
+Package: tmate-slave
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}
+Description: tmate slave server
+ tmate-slave is the server side part of tmate.io.

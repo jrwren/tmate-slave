@@ -1,0 +1,29 @@
+#!/bin/bash -e
+##
+## summary of how this script can be called:
+##        * <new-preinst> install
+##        * <new-preinst> install <old-version>
+##        * <new-preinst> upgrade <old-version>
+##        * <old-preinst> abort-upgrade <new-version>
+##
+
+. /usr/share/debconf/confmodule
+
+if ! getent group tmate >/dev/null; then
+    addgroup --system tmate >/dev/null
+fi
+
+if ! getent passwd tmate >/dev/null; then
+    adduser \
+      --system \
+          --disabled-login \
+      --ingroup tmate \
+      --gecos "tmate server" \
+      --shell /bin/false \
+      tmate  >/dev/null
+fi
+
+mkdir -p /var/log/tmate
+chown tmate:tmate /var/log/tmate
+
+#DEBHELPER#
